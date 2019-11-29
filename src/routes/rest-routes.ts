@@ -9,5 +9,8 @@
     restRouter.put('/users/:email', controller.user.updateUser);       //Update a single user that matches the passed id
     restRouter.delete('/users/:email', controller.user.deleteUser);    //Delete a single user that matches the passed id
 
-    restRouter.get('/movies', controller.movie.getMovies); // Get all movies
-    restRouter.post('/movies', controller.movie.createMovie); // Register a new movie
+    restRouter.get('/movies', controller.movie.getMovies);   // Get all movies
+    restRouter.post('/movies', controller.movie.createMovie);           // Register a new movie
+
+    restRouter.get('/categories', controller.categorie.getCategories);              // Get all categories
+    restRouter.post('/categories', controller.categorie.createCategorie);           // Register a new categorie

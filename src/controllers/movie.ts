@@ -1,12 +1,13 @@
 import { BaseContext } from 'koa';
-    import { getManager, Repository, Not, Equal } from 'typeorm';
+    import { getManager, Repository, Not, Equal, Connection, getRepository,createQueryBuilder } from 'typeorm';
     import { validate, ValidationError } from 'class-validator';
     import { movie } from 'models/movie';
+import { categorie } from 'controllers';
     export default class movieController{
         public static async getMovies(ctx: BaseContext){
             const movieRepository: Repository<movie> = getManager().getRepository(movie);
             const movies: movie[] = await movieRepository.find();
-            if(movies){
+            if(movies.length){
                 ctx.status = 200;
                 ctx.body = movies.map(({movieName, movieCategorie}) => {
                     return {
@@ -14,6 +15,10 @@ import { BaseContext } from 'koa';
                         movieCategorie
                     };
                 });
+            } else {
+                ctx.status = 204;
+                ctx.body = '';
+                ctx.message = 'no content';
             }
         }
 
@@ -31,8 +36,17 @@ import { BaseContext } from 'koa';
             if(errors.length > 0){
                 ctx.status = 400;
                 ctx.body = errors;
-            }else if(errors.length === 0 || ctx.body.length === 0){
-                return ctx.res.noContent({ message: 'No content found' });
+            } else if ( await movieRepository.findOne({ movieName: movieToBeSaved.movieName}) ) {
+                // return BAD REQUEST status code and movie already exists error
+                ctx.status = 400;
+                ctx.body = 'The specified movie already exists';
+            } else {
+                console.log(movieToBeSaved);
+                const user = await movieRepository.save(movieToBeSaved);
+                // return CREATED status code and updated user
+                ctx.status = 201;
+                ctx.body = user;
+                ctx.message = "Success";
             }
 
         }

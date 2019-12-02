@@ -51,4 +51,25 @@ import { categorie } from 'controllers';
 
         }
 
+        public static async getMovie (ctx: BaseContext) {
+            // get a user repository to perform operations with user
+            const movieRepository: Repository<movie> = getManager().getRepository(movie);
+            // load user by email
+            const movies: movie = await movieRepository.findOne({
+                where: {
+                    id: ctx.params.id
+                }
+            });
+            if (movies) {
+                // return OK status code and loaded user object
+                ctx.status = 200;
+                ctx.body = movies;
+                ctx.message = ", Data found!";
+            } else {
+                // return a BAD REQUEST status code and error message
+                ctx.status = 400;
+                ctx.body = 'The movie you are trying to retrieve doesn\'t exist in the db';
+            }
+        }
+
     }

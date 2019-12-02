@@ -8,8 +8,9 @@ import { BaseContext } from 'koa';
             const movieCategories: movieCategorie[] = await movieCatRepository.find();
             if(movieCategories.length){
                 ctx.status = 200;
-                ctx.body = movieCategories.map(({categorie}) => {
+                ctx.body = movieCategories.map(({id,categorie}) => {
                     return {
+                        id,
                         categorie
                     };
                 });

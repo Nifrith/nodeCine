@@ -11,6 +11,7 @@
 
     restRouter.get('/movies', controller.movie.getMovies);   // Get all movies
     restRouter.post('/movies', controller.movie.createMovie);           // Register a new movie
+    restRouter.post('/movies/:movieName', controller.movie.getMovie);           // Register a new movie
 
     restRouter.get('/categories', controller.categorie.getCategories);              // Get all categories
     restRouter.post('/categories', controller.categorie.createCategorie);           // Register a new categorie

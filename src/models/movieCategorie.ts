@@ -9,9 +9,6 @@ import {
 
 
 import {movie} from "./movie";
-//Import functions from the class-valadiator package that we will
-//use to validate data when someone is creating or editing a user
-import { Length, IsEmail } from 'class-validator';
 //This decorator (denoted by the @ symbol) tells type-orm that
 //we want to call the database table users
 @Entity()

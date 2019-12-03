@@ -1,9 +1,13 @@
-    //server.ts
+    import { config } from "dotenv"
+    
+    config();
+
     import { postgresDB } from 'databases/postgres-db';
     import {qaRouter} from 'routes/qa-routes';
     import {restRouter} from 'routes/rest-routes';
     import * as bodyParser from 'koa-bodyparser';
-    var app = require('./app');
+    
+    const app = require('./app');
     const bootstrap = async () => {
         // Initialize the database
         await postgresDB();

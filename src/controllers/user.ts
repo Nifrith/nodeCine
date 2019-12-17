@@ -45,7 +45,7 @@
             // build up entity user to be saved
             const userToBeSaved: User = new User();
       
-            userToBeSaved.name = ctx.request.body.name
+            userToBeSaved.name = ctx.request.body.name;
             userToBeSaved.email = ctx.request.body.email;
             userToBeSaved.hashedPassword = ctx.request.body.hashedPassword;
             //validate(ctx.request.body.name);
@@ -65,7 +65,7 @@
                 // return CREATED status code and updated user
                 ctx.status = 201;
                 ctx.body = user;
-                ctx.message = "Success";
+                ctx.message = "User registered sucesfully";
             }
         }
         public static async updateUser (ctx: BaseContext) {

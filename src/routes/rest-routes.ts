@@ -4,14 +4,14 @@
     export const restRouter = new Router();
     //Routes for the user entity
     restRouter.get('/users', controller.user.getUsers);             //Get all users in the database
-    restRouter.get('/users/:email', controller.user.getUser);          //Get a single user by id
-    restRouter.post('/users', controller.user.createUser);          //Create a single user in the database
-    restRouter.put('/users/:email', controller.user.updateUser);       //Update a single user that matches the passed id
-    restRouter.delete('/users/:email', controller.user.deleteUser);    //Delete a single user that matches the passed id
+    restRouter.get('/user/:email', controller.user.getUser);          //Get a single user by id
+    restRouter.post('/user', controller.user.createUser);          //Create a single user in the database
+    restRouter.put('/user/:email', controller.user.updateUser);       //Update a single user that matches the passed id
+    restRouter.delete('/user/:email', controller.user.deleteUser);    //Delete a single user that matches the passed id
 
     restRouter.get('/movies', controller.movie.getMovies);   // Get all movies
-    restRouter.post('/movies', controller.movie.createMovie);           // Register a new movie
-    restRouter.post('/movies/:movieName', controller.movie.getMovie);           // Register a new movie
+    restRouter.post('/movie', controller.movie.createMovie);           // Register a new movie
+    restRouter.post('/movie/:id', controller.movie.getMovie);           // Get a movie
 
     restRouter.get('/categories', controller.categorie.getCategories);              // Get all categories
-    restRouter.post('/categories', controller.categorie.createCategorie);           // Register a new categorie
+    restRouter.post('/categorie', controller.categorie.createCategorie);           // Register a new categorie

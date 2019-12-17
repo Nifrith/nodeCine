@@ -6,8 +6,21 @@
     import {qaRouter} from 'routes/qa-routes';
     import {restRouter} from 'routes/rest-routes';
     import * as bodyParser from 'koa-bodyparser';
+    const Sentry = require('@sentry/node');
+    Sentry.init({ dsn: 'https://ab41c6282d2f41f889e6b7eeab54793f@sentry.io/1851434' });
+
+    
     
     const app = require('./app');
+    
+    app.on('error', (err, ctx) => {
+        Sentry.withScope(function(scope) {
+          scope.addEventProcessor(function(event) {
+            return Sentry.Handlers.parseRequest(event, ctx.request); 
+          });
+          Sentry.captureException(err);
+        });
+      });
     const bootstrap = async () => {
         // Initialize the database
         await postgresDB();

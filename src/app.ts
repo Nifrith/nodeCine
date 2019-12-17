@@ -1,4 +1,4 @@
     //app.ts
     import * as Koa from 'koa';
-    var app = new Koa();
+    const app = new Koa();
     module.exports = app;

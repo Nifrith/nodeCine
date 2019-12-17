@@ -3,6 +3,8 @@ import { BaseContext } from 'koa';
     import { validate, ValidationError } from 'class-validator';
     import { movieCategorie } from 'models/movieCategorie';
     export default class categorieController{
+
+        
         public static async getCategories(ctx: BaseContext){
             const movieCatRepository: Repository<movieCategorie> = getManager().getRepository(movieCategorie);
             const movieCategories: movieCategorie[] = await movieCatRepository.find();

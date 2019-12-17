@@ -4,3 +4,4 @@
     export { default as user } from './user';
     export { default as movie} from './movie';
     export { default as categorie} from './categorie';
+    export { default as language} from './language';

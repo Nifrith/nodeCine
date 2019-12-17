@@ -2,7 +2,6 @@ import { BaseContext } from 'koa';
     import { getManager, Repository, Not, Equal, Connection, getRepository,createQueryBuilder } from 'typeorm';
     import { validate, ValidationError } from 'class-validator';
     import { movie } from 'models/movie';
-import { categorie } from 'controllers';
     export default class movieController{
         public static async getMovies(ctx: BaseContext){
             const movieRepository: Repository<movie> = getManager().getRepository(movie);
@@ -29,8 +28,11 @@ import { categorie } from 'controllers';
             // build up entity movie to be saved
             const movieToBeSaved: movie = new movie();
 
+            try {
             movieToBeSaved.movieName = ctx.request.body.movieName;
-            movieToBeSaved.movieCategorie = ctx.request.body.movieCategorie;
+            movieToBeSaved.movieCategorie = ctx.request.body.movieCategorie; 
+
+           
 
             const errors: ValidationError[] = await validate(movieToBeSaved, { skipMissingProperties: true});
             if(errors.length > 0){
@@ -47,7 +49,10 @@ import { categorie } from 'controllers';
                 ctx.status = 201;
                 ctx.body = user;
                 ctx.message = "Success";
+            }            } catch (error) {
+                  console.log(error);
             }
+
 
         }
 

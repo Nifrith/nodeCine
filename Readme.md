@@ -3,23 +3,28 @@
 Cinema monolitic api to manage every request related to cinemas (user, movies, movie languages, categories, ticket buys,
 physical places, seats, etc...)
 
-## Stack
+This proyect was developed on linux environment, so most of instructions will be oriented to linux platform.
 
-On this proyect i'm using 
 
-### Prerequisites
+### Stack
 
-What things you need to install the software and how to install them
+In order to create this api, i've used following technologies:
 
 ```
-Give examples
+Git
+NodeJs
+Koa
+Koabodyparser
+dotenv
+Typescript
+PostgreSQL
+and others
+
 ```
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
+First of all, we need git. In case you are new using versioning technologies, use following steps to install git or refer to official documentation on https://git-scm.com
 
 ```
 Give the example

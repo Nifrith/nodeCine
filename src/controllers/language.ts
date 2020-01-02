@@ -14,7 +14,6 @@ import { BaseContext } from 'koa';
             
             languageToBeSaved.language = ctx.request.body.language;
             //validate ctx.request.body fields
-x
             // errors is an array of validation errors
             const errors: ValidationError[] = await validate(languageToBeSaved, { skipMissingProperties: true });
 
@@ -47,16 +46,16 @@ x
 
         public static async getLanguage (ctx: BaseContext){
           // get a language repository to work with
-          
-          const languagerepo: Repository<language> = getManager().getRepository(language);
+            // get a language repository to perform operations with user
+            const languagerepository: Repository<language> = getManager().getRepository(language);
           //load language by id
-          const language: language = await languagerepo.findOne({
+          const languagetofind: language = await languagerepository.findOne({
                 where:{
                     id: ctx.params.id
                 }
           });
 
-          if (language) {
+          if (languagetofind) {
               // return OK status code and loaded language object
               ctx.satus = 200;
               ctx.body = language;

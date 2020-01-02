@@ -32,6 +32,6 @@
         //Tell our application to use the router we have created to handle routes for our rest api
         app.use(restRouter.routes(), restRouter.allowedMethods())
         //Tell the app to listen on port 3000
-        app.listen(3000);
+        app.listen(process.env.APP_PORT);
     };
     bootstrap();

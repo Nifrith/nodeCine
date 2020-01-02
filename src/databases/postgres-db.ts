@@ -16,9 +16,8 @@
            database : process.env.DB_DATABASE,
            ssl: true,
            entities: postgresTables,
-           logging: ['query', 'error'],
            synchronize: true,
-       }).then((connection) => {
+       }).then((establishDatabaseConnection) => {
            console.log('Database connection established');
            
        });

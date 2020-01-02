@@ -1,6 +1,6 @@
 import {Entity, Column, PrimaryGeneratedColumn,  CreateDateColumn,
     UpdateDateColumn,OneToMany} from "typeorm";
-import {movie} from "./movie";
+    import {movie} from "./movie";
 
 @Entity()
 export class language{

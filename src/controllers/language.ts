@@ -9,11 +9,12 @@ import { BaseContext } from 'koa';
             // get a language repository to perform operations with language
             const languagerepo: Repository<language> = getManager().getRepository(language);
             // build new language entity to be saved
+            const lang = new language();
             const languageToBeSaved: language = new language();
             
             languageToBeSaved.language = ctx.request.body.language;
             //validate ctx.request.body fields
-
+x
             // errors is an array of validation errors
             const errors: ValidationError[] = await validate(languageToBeSaved, { skipMissingProperties: true });
 

@@ -14,4 +14,11 @@
     restRouter.post('/movie/:id', controller.movie.getMovie);           // Get a movie
 
     restRouter.get('/categories', controller.categorie.getCategories);              // Get all categories
-    restRouter.post('/categorie', controller.categorie.createCategorie);           // Register a new categorie
+    restRouter.post('/categorie', controller.categorie.createCategorie);   
+    
+    
+    restRouter.get('/languages', controller.language.getLanguages);
+    restRouter.get('/language/:id', controller.language.getLanguage);
+    restRouter.post('/language', controller.language.createLanguage);
+    restRouter.delete('/language/:id', controller.language.deleteLanguage);
+    restRouter.put('/language/:id', controller.language.updateLanguage);// Register a new categorie

@@ -27,7 +27,9 @@ and others
 First of all, we need git. In case you are new using versioning technologies, use following steps to install git or refer to official documentation on https://git-scm.com
 
 ```
-Give the example
+- sudo add-apt-repository ppa:git-core/ppa
+- sudo apt-update
+- sudo apt install git
 ```
 
 And repeat
